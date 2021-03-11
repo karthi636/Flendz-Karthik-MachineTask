@@ -1,0 +1,28 @@
+<h1>LOGIN</h1>
+
+<form (submit)="formSumbit(f)" #f="ngForm">
+
+  {{msg}} <br> <br>
+ 
+Email:<input type="email" placeholder="enter your email" required [(ngModel)]="email" name="uemail"
+pattern="[^@\s]+@[^@\s]+\.[^@\s]+" #useremail="ngModel"> <br> <br>
+
+<p  class="alert alert-danger" *ngIf="useremail.errors?.required && useremail.touched">
+ email is required
+</p>
+
+
+<p class="alert alert-danger" *ngIf="useremail.errors?.pattern && useremail.touched">
+  please enter the valid email
+</p>
+Password:<input type="password" required placeholder="enter your password" [(ngModel)]="password" name="upass"
+#userpass="ngModel" > <br> <br>
+
+<p class="alert alert-danger" *ngIf="userpass.invalid && userpass.touched">
+    password is required
+</p>
+
+
+<input type="submit" value="sumbit" class="text-primary">
+
+</form>
